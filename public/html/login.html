@@ -14,7 +14,7 @@
 
 <body>
 	<div class="jumbotron">
-			<div id="logo">LOGO</div>
+		<div id="logo">LOGO</div>
 		<div class="outer-div text-center">
 			<div class="mid-div">
 				<div class="center-div">
@@ -24,13 +24,13 @@
 					<div class="container" style="padding-top: 40px;">
 						<form class="form-inline justify-content-center">
 							<label class="sr-only" for="splashFormName">Name</label>
-							
+
 							<input type="text" class="form-control mb-2 mr-sm-2" id="splashFormName" placeholder="Username">
 
 							<label class="sr-only" for="splashFormPassword">Password</label>
 							<div class="input-group mb-2 mr-sm-2">
 								<div class="input-group-prepend">
-									
+
 								</div>
 								<input type="text" class="form-control" id="splashFormPassword" placeholder="Password">
 							</div>
@@ -64,12 +64,32 @@
 
 
 	<!-- js -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	 crossorigin="anonymous"></script>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
 	 crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 	 crossorigin="anonymous"></script>
+
+	<script>
+		let userObj = {
+			userName: "exampleName", 
+			firstName: "john",
+			lastName: "doe",
+			email: "admin@chat.com",
+			password: "password",
+			imgUrl: "https://",
+		}; 
+		$.post("/api/createUser", {userObj:userObj}, function (res) {
+			console.log(res);
+
+			//insert modal to communicate with user on 200 or 500 status if/else res.status
+
+			
+		})
+	</script>
 </body>
 
 </html>

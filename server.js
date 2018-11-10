@@ -1,6 +1,9 @@
 require('dotenv').config();
 var express = require('express');
 var exphbs = require('express-handlebars');
+var session = require('express-session');
+let config = require('./config.js')
+const bodyParser = require('body-parser');
 
 var db = require('./models');
 
@@ -8,10 +11,17 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
+app.use(session({
+	secret: config.secret,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 
+app.use(express.static('public'));
 // Handlebars
 app.engine(
 	'handlebars',
