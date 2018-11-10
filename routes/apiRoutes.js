@@ -12,6 +12,7 @@ module.exports = function (app) {
 	app.post('/api/createUser', function (req, res) {
 		db.User.create(req.body.userObj).then(function(dbUser) {
 			req.session.user = dbUser.dataValues
+			req.session.authenticated = true;
 			console.log(req.session)
 			res.send({status:200}); 
 		}).catch(function(err){
@@ -20,6 +21,23 @@ module.exports = function (app) {
 	
 	
 	});
+
+	app.post('/api/updateProfile', function(req,res){
+		console.log(req.session)
+		if (!req.session.authenticated){
+			console.log("must be logged in!")
+			return
+		}
+
+		db.User.update(req.body,
+			{
+				where: {
+					id: req.session.user.id
+				}
+			})
+
+
+	})
 
 	// Delete an example by id
 	app.delete('/api/examples/:id', function (req, res) {
