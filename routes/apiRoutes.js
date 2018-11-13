@@ -10,7 +10,8 @@ module.exports = function (app) {
 
 
 	app.post('/api/createUser', function (req, res) {
-		db.User.create(req.body.userObj).then(function(dbUser) {
+		console.log(req.body);
+		db.User.create(req.body.newUser).then(function(dbUser) {
 			req.session.user = dbUser.dataValues
 			req.session.authenticated = true;
 			console.log(req.session)
@@ -19,8 +20,33 @@ module.exports = function (app) {
 			res.send({status:500, error: err}); 
 		})
 	
-	
 	});
+
+	app.post('/api/login/:userName/:password', function(req,res) {
+		console.log(req.body);
+		db.User.findOne({
+			where: {
+				userName: req.params.userName,
+				password: req.params.password
+			}
+		}).then(function(dbUser) {
+			if(dbUser){
+
+				req.session.authenticated = true;
+				console.log("correct!",dbUser)
+				console.log(req.session)
+				res.send({status:200, redirect: '/dashboard'}); 
+			}
+
+			else {
+				console.log("wrong")
+				res.send({status:404});
+			}
+		}).catch(function(err){
+			res.send({status:500, error: err}); 
+		})
+	});
+	
 
 	// app.post('/api/updateProfile', function(req,res){
 	// 	console.log(req.session)

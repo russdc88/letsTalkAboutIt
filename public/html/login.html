@@ -59,11 +59,6 @@
 	</div>
 
 
-
-
-
-
-
 	<!-- js -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	 crossorigin="anonymous"></script>
@@ -84,11 +79,18 @@
 		$("#loginBtn").on("click", function (event) {
 			event.preventDefault();
 
-			$.post("/api/createUser", { userObj: userObj }, function (res) {
+//use jquery to grab values
+	let userName = $("#splashFormName").val().trim()
+	let password = $("#splashFormPassword").val()
+
+			$.post("/api/login/" + userName + "/" + password , { userName: userName, password: password}, function (res) {
 				console.log(res);
+				if (res.redirect) {
+					window.location.pathname = res.redirect; 
+				}
+
 
 				//insert modal to communicate with user on 200 or 500 status if/else res.status
-
 
 			})
 
