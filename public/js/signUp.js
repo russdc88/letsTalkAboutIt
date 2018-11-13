@@ -24,8 +24,11 @@ $(document).ready(function () {
 		// }
 		$.post("/api/createUser", { 
 			newUser: newUser }, function(res) {
-				console.log(res); 
-				console.log(newUser); 
+				console.log("this is the res from signUp.js", res); 
+				 
+				if (res.redirect){
+					window.location.pathname = res.redirect
+				}
 			}
 
 	)}); 
