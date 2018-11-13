@@ -8,7 +8,7 @@
   },
   "test": {
     "username": "root",
-    "password": "password",
+		"password": "password",
     "database": "chat_db",
     "host": "localhost",
     "dialect": "mysql",
