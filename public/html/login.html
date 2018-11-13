@@ -42,7 +42,7 @@
 								</label>
 							</div> -->
 
-							<button type="submit" id="splashBtn" class="btn btn-secondary mb-2">Let's Go</button>
+							<!-- <button type="submit" id="splashBtn" class="btn btn-secondary mb-2">Let's Go</button> -->
 							<button type="submit" id="loginBtn" class="btn btn-secondary mb-2">Login</button>
 
 
@@ -57,11 +57,6 @@
 
 	</div>
 	</div>
-
-
-
-
-
 
 
 	<!-- js -->
@@ -84,24 +79,31 @@
 		$("#loginBtn").on("click", function (event) {
 			event.preventDefault();
 
-			$.post("/api/createUser", { userObj: userObj }, function (res) {
+//use jquery to grab values
+	let userName = $("#splashFormName").val().trim()
+	let password = $("#splashFormPassword").val()
+
+			$.post("/api/login/" + userName + "/" + password , { userName: userName, password: password}, function (res) {
 				console.log(res);
+				if (res.redirect) {
+					window.location.pathname = res.redirect; 
+				}
+
 
 				//insert modal to communicate with user on 200 or 500 status if/else res.status
 
-
 			})
 
 		})
-		$("#splashBtn").on("click", function (event) {
-			event.preventDefault();
+		// $("#splashBtn").on("click", function (event) {
+		// 	event.preventDefault();
 
-			$.post("/api/updateProfile", { imgUrl: "https://thumbor.thedailymeal.com/9YjCHghGcBt7LDg-VKKgm-arFtc=/840x565/filters:focal(337x370:338x371)/https://www.thedailymeal.com/sites/default/files/story/2018/Trevor_pic.jpg" }, function (res) {
-				console.log(res)
-			})
+		// 	$.post("/api/updateProfile", { imgUrl: "https://thumbor.thedailymeal.com/9YjCHghGcBt7LDg-VKKgm-arFtc=/840x565/filters:focal(337x370:338x371)/https://www.thedailymeal.com/sites/default/files/story/2018/Trevor_pic.jpg" }, function (res) {
+		// 		console.log(res)
+		// 	})
 
 
-		})
+
 
 	</script>
 </body>
