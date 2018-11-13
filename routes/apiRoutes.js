@@ -22,22 +22,22 @@ module.exports = function (app) {
 	
 	});
 
-	app.post('/api/updateProfile', function(req,res){
-		console.log(req.session)
-		if (!req.session.authenticated){
-			console.log("must be logged in!")
-			return
-		}
+	// app.post('/api/updateProfile', function(req,res){
+	// 	console.log(req.session)
+	// 	if (!req.session.authenticated){
+	// 		console.log("must be logged in!")
+	// 		return
+	// 	}
 
-		db.User.update(req.body,
-			{
-				where: {
-					id: req.session.user.id
-				}
-			})
+		// db.User.update(req.body,
+		// 	{
+		// 		where: {
+		// 			id: req.session.user.id
+		// 		}
+		// 	})
 
 
-	})
+	// })
 
 	// Delete an example by id
 	app.delete('/api/examples/:id', function (req, res) {
