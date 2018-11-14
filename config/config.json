@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "wildcard88",
+    "password": "password",
     "database": "chat_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-		"password": "wildcard88",
+		"password": "password",
     "database": "chat_db",
     "host": "localhost",
     "dialect": "mysql",

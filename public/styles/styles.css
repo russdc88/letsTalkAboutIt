@@ -25,8 +25,7 @@ h1 {
 #logo{
 	top: 20px;
 	position: absolute;
-	font-size: 30px;
-	font-weight: 700px;
+	width: 230px;
 }
 
 .outer-div
@@ -75,6 +74,30 @@ h1 {
 	margin: 0 auto;
 }
 
+/* REGISTRATION PAGE */
+#tacoLogo {
+	width: 250px;
+	margin-right: 45px;
+}
+.media-body {
+	margin-left: 45px;
+}
+.media {
+	margin: 0 auto; 
+}
+
+label {
+	padding-top: 20px;
+}
+
+#registerBtn {
+	padding: 10px 50px;
+	font-size: 18px;
+}
+
+.signUp {
+	padding-top: 80px;
+}
 
 @media screen and (max-width: 901px) {
 	h1 {

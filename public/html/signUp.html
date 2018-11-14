@@ -4,7 +4,7 @@
 
 <head>
 	<title> User Login And Registration </title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="../styles/styles.css">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<!-- js -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -16,27 +16,44 @@
 </head>
 
 <body>
-	<div class="col-md-6 login-right">
-		<h2> Register Here </h2>
-		<form>
-			<div class="form-group">
-				<label>Username</label>
-				<input type="text" name="user" class="form-control" id="username" placeholder="example123" required>
-				<label>First Name</label>
-				<input type="text" name="firstName" class="form-control" id="firstName" placeholder="Jane" required>
-				<label>Last Name</label>
-				<input type="text" name="lastName" class="form-control" id="lastName" placeholder="Doe" required>
-				<div class="form-group">
-					<label for="email">Email address</label>
-					<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="admin@chat.com">
-					<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	
+	
+	<div class="container signUp">
+		<div class="row">
+				
+			<div class="media">
+				<img class="align-self-start mr-3" src="../images/taco.png" alt="taco logo" id="tacoLogo">
+				<div class="media-body" style="width: 600px;">
+					<h1>Get Started with a Free Account</h1>
+					<div>Create a Let's Talk About It account to chat with your friends or finally have the courage to tell off your collegue. Already have an account? <a href="/login">Sign In Here.</a></div>
+					<form>
+						<div class="form-group">
+							<label>Username</label>
+							<input type="text" name="user" class="form-control" id="username" placeholder="pumpkineater69" required>
+							<label>First Name</label>
+							<input type="text" name="firstName" class="form-control" id="firstName" placeholder="Peter" required>
+							<label>Last Name</label>
+							<input type="text" name="lastName" class="form-control" id="lastName" placeholder="Griffin" required>
+							<div class="form-group">
+								<label for="email">Email address</label>
+								<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="pgriffin@chat.com">
+								<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+							</div>
+							<div class="form-group">
+								<label>Password</label>
+								<input type="password" name="Password" class="form-control" id="password" placeholder="*********" required
+								 data-toggle="password">
+							</div>
+							<button type="submit" class="btn btn-primary float-right" id="registerBtn"> 
+								Get Chatting </button>
+					</form>
 				</div>
-				<div class="form-group">
-					<label>Password</label>
-					<input type="text" name="Password" class="form-control" id="password" placeholder="*********" required>
-				</div>
-				<button type="submit" class="btn btn-primary" id="registerBtn"> Register </button>
-		</form>
+			</div>
+
+
+
+		</div>
+	</div>
 	</div>
 	</div>
 
