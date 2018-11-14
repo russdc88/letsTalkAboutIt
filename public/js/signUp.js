@@ -5,6 +5,7 @@ $(document).ready(function () {
 	var lastName = $("#lastName");
 	var email = $("#email");
 	var password = $("#password");
+	var userImage = $("#userImage");
 
 	
 	// Adding an event listener for when the form is submitted
@@ -16,6 +17,7 @@ $(document).ready(function () {
 		lastName: lastName.val().trim(),
 		email: email.val().trim(),
 		password: password.val().trim(),
+		userImage: userImage.val().trim()
 	};
 		event.preventDefault();
 		// Wont submit the post if we are missing a body, title, or author

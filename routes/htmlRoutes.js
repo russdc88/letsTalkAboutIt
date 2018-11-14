@@ -22,7 +22,7 @@ module.exports = function (app) {
 			if (req.session.authenticated = true){
 
 				console.log(dbUser)
-				res.render("example", {user: dbUser})
+				res.render("userProfile", {user: dbUser})
 			}
 			else {
 				console.log('No access!')
