@@ -15,7 +15,11 @@
 // 	}) 
 
 
+<<<<<<< HEAD
 // })
+=======
+})
+>>>>>>> master
 
 var app = require('express')();
 var http = require('http').Server(app);
