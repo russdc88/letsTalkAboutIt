@@ -50,7 +50,7 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/html/about.html"));
 	});
 
-	app.get("/dashboard/:id", function(req, res) {
+	app.get("/dashboard", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/html/dashboard.html"));
 	});
 	// // Load example page and pass in an example by id

@@ -6,7 +6,7 @@ $("#loginBtn").on("click", function (event) {
 let userName = $("#splashFormName").val().trim()
 let password = $("#splashFormPassword").val()
 
-	$.post("/api/login/" + userName + "/" + password , { userName: userName, password: password}, function (res) {
+	$.post("/api/login" , { userName: userName, password: password}, function (res) {
 		
 		if (res.redirect) {
 			window.location.pathname = res.redirect; 
