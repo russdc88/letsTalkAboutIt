@@ -1,0 +1,38 @@
+<div class="container">
+	<div class="row">
+			<div class="card" style="width: 35rem; margin: 0 auto;">
+				<div class="card-body">
+					<div class="text-center"><img src="{{user.userImage}}" id="userImage" style="width: 50%;"></div>
+					<br>
+					<h1 class="card-title text-center">{{user.userName}}</h1><br>
+					
+
+					<table class="table table-hover">
+						<tbody>
+							<tr>
+								<th scope="row">
+									<h5>
+										{{user.firstName}} {{user.lastName}}</h5>
+								</th>
+								<td>Update</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<h5>{{user.email}}</h5>
+								</th>
+								<td>Update</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="3"><button type="submit" class="btn btn-primary btn-block" id="signOut"> Sign Out
+									</button></th>
+							</tr>
+						</tbody>
+					</table>
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -2,7 +2,9 @@
 
 html, body {
 	font-family: 'Roboto', sans-serif;
-	padding-bottom: 30px;
+	margin: 0; 
+	height: 100%; 
+	overflow: hidden;
 }
 
 h1 {
@@ -10,6 +12,15 @@ h1 {
 	padding-bottom: 40px;
 }
 
+.jumbotron {
+  background: #000 url("../images/background.jpg") no-repeat bottom center;
+  background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  color: #fff;
+	height: calc(100vh);
+}
 
 #logo{
 	top: 20px;
@@ -17,6 +28,22 @@ h1 {
 	width: 230px;
 }
 
+.outer-div
+{
+     display: table;
+     position: absolute;
+     height: 100%;
+     width: 100%;
+}
+.mid-div
+{
+     display: table-cell;
+     vertical-align: middle;
+}
+.center-div
+{
+     margin: 0 auto;
+}
 
 .form-inline {
 	padding-top: 20px;
@@ -30,41 +57,23 @@ h1 {
 	padding: 10px 100px;
 }
 
+#splashFormPassword, #splashFormName {
+	padding: 30px 120px 30px 30px;
+	color: black;
+}
+
+#splashSubmit {
+	padding: 5px 50px;
+}
+
+#splashBtn, #loginBtn {
+	padding: 17px 40px;
+}
 
 .form-inline {
 	margin: 0 auto;
 }
 
-/* REGISTRATION PAGE */
-#tacoLogo {
-	width: 250px;
-	margin-right: 45px;
-}
-.media-body {
-	margin-left: 45px;
-}
-.media {
-	margin: 0 auto; 
-}
-
-label {
-	padding-top: 20px;
-}
-
-#registerBtn {
-	padding: 10px 50px;
-	font-size: 18px;
-}
-
-.signUp {
-	padding-top: 80px;
-}
-
-/* user profile */
-
-#userImage {
-width: 250px;
-}
 
 @media screen and (max-width: 901px) {
 	h1 {

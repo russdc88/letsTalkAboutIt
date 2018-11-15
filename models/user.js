@@ -7,7 +7,7 @@ module.exports = function (sequelize, DataTypes) {
 		lastName: DataTypes.STRING,
 		email: DataTypes.STRING,
 		password: DataTypes.STRING,
-		imgUrl: DataTypes.STRING
+		userImage: DataTypes.STRING
 	});
 	return User;
 };
