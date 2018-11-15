@@ -1,7 +1,8 @@
-// console.log("hi")
+var socket = io();
 
-// $("#signOut").on("click", function(event){
-// 	event.preventDefault();
+$("#submitMessage").on("click", function (event) {
+	event.preventDefault();
+	socket.emit('chat', { message: "hi" })
 
 // 	console.log("Working!!!")
 
@@ -17,3 +18,4 @@
 
 // })
 
+})	

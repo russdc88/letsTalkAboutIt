@@ -70,4 +70,16 @@
 		})
 	})
 
+	function addButtons(){
+		var dash = "<a href=/dashboard/" + window.location.pathname.split("/")[2] +">Dashboard</a>"
+		var about ="<a href=/about/" + window.location.pathname.split("/")[2] +">About</a>"
+		$(".dash1").append(dash) 
+		$(".dash2").append(about)
+	}
+
+	addButtons()
+
+
+
+
 </script>

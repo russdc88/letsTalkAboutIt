@@ -8,8 +8,10 @@ const bodyParser = require('body-parser');
 var db = require('./models');
 
 var app = express();
-var PORT = process.env.PORT || 3000;
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
+var PORT = process.env.PORT || 3000;
 // Middleware
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
@@ -43,16 +45,35 @@ if (process.env.NODE_ENV === 'test') {
 	syncOptions.force = true;
 }
 
+
+
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function () {
-	app.listen(PORT, function () {
+	 http.listen(PORT, function () {
 		console.log(
 			'==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.',
 			PORT,
 			PORT
 		);
 	});
+
 });
+
+// socket.io
+
+io.on('connection', function(socket){
+		console.log('user connected')
+		
+		socket.on('chat', function(msg){
+			console.log("message:" + msg.message)
+		})
+  });
+
+
+
+
+
+
 
 module.exports = app;
 //socket.io server code

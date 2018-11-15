@@ -11,8 +11,8 @@
 		"password": "!Dottycat87",
     "database": "chat_db",
     "host": "localhost",
-    "dialect": "mysql",
-    "logging": false
+    "dialect": "mysql"
+    
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
