@@ -61,7 +61,7 @@
 
 		var userId = window.location.pathname.split("/")[2]
 
-		$.post("/api/dashboard/" + userId, { id: userId }, function (res) {
+		$.post("/api/dashboard/", { id: userId }, function (res) {
 			console.log(res);
 			if (res.redirect) {
 				window.location.pathname = res.redirect;
