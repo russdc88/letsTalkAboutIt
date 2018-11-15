@@ -30,11 +30,15 @@ module.exports = function (app) {
 		})
 	})
 
+	//~~~~~~socket.io html send file~~~~~~~~//
+
+
+
 	app.get("/about/:id", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/html/about.html"));
 	});
 
-	app.get("/dashboard/:id", function(req, res) {
+	app.get("/dashboard", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/html/dashboard.html"));
 	});
 	// // Load example page and pass in an example by id

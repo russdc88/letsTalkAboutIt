@@ -24,13 +24,33 @@
 
 <body>
 	<!-- As a heading -->
-	<nav class="navbar navbar-dark bg-dark">
-		<span class="navbar-brand mb-0 h1">Navbar</span>
-	</nav>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">
+					<img src="../images/ltailogo-color.png" width="140" alt="logo">
+				</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-link" href="/dashboard/:id">Dashboard <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="/about/:id">About</a>
+					</li>
+					<ul class="float-right">
+					
+				</ul>
+				</ul>
+			</div>
+			<button type="submit" class="btn btn-outline-primary float-right" id="signOut" style="width: 150px;"> Sign Out</button>
+		</nav>
+
 	<div class="container-fluid ">
 		<div class="row">
-			<div class="col-xl-3  bg-secondary full">
-				<h5>Welcome!</h5>
+			<div class="col-xl-3  bg-secondary full" id="friendsList">
+				<h5 id="welcome">Welcome!</h5>
 			</div>
 			<div class="col-xl-9 ">
 				<div class="almost-full bg-light">
@@ -47,15 +67,31 @@
 
 
 						<div class="col-auto">
-							<button type="button" class="btn btn-primary mb-2 " id="submitMessage">Submit</button>
+							<button type="button" class="btn btn-primary mb-2 btn-block " id="submitMessage">Submit</button>
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-	<script src="./../js/dashboard.js">
+	<script src="./../js/dashboard.js"></script>
 	
+	<script>
+		$("#signOut").on("click", function (event) {
+		event.preventDefault();
+
+		console.log("Working!!!")
+
+		var userId = window.location.pathname.split("/")[2]
+		$.post("/api/dashboard/" + userId, { id: userId }, function (res) {
+			console.log(res);
+			if (res.redirect) {
+				window.location.pathname = res.redirect;
+				
+			}
+		})
+	})
+
 	</script>
 </body>
 
