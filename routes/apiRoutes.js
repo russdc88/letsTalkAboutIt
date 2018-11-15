@@ -8,17 +8,11 @@ module.exports = function (app) {
 		});
 	});
 
-
-// creating user with authenticating key being false
-
 	app.post('/api/createUser', function (req, res) {
-		console.log("this is the req.body from Route", req.body);
-		db.User.create(req.body.newUser).then(function(dbUser) {
-			console.log("this is req.session", req.session)
+		db.User.create(req.body.userObj).then(function(dbUser) {
 			req.session.user = dbUser.dataValues
-			req.session.authenticated = false;
 			console.log(req.session)
-			res.send({status:200,redirect:'/login'}); 
+			res.send({status:200}); 
 		}).catch(function(err){
 			res.send({status:500, error: err}); 
 		})
@@ -55,6 +49,7 @@ module.exports = function (app) {
 		})
 	});
 
+<<<<<<< HEAD
 	// logging out
 
 	app.post('/api/dashboard/', function (req,res){
@@ -128,6 +123,8 @@ module.exports = function (app) {
 
 	// })
 
+=======
+>>>>>>> master
 	// Delete an example by id
 	app.delete('/api/examples/:id', function (req, res) {
 		db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
