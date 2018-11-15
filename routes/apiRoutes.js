@@ -51,7 +51,7 @@ module.exports = function (app) {
 
 	// logging out
 
-	app.post('/api/dashboard/', function (req,res){
+	app.post('/api/dashboard', function (req,res){
 		if (req.session.authenticated = true){
 
 			

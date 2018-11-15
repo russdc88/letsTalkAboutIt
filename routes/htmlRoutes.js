@@ -31,19 +31,7 @@ module.exports = function (app) {
 	})
 
 	//~~~~~~socket.io html send file~~~~~~~~//
-	app.get('/dashboard', function(req, res){
-		// res.sendFile(path.join(__dirname, "../public/html/dashboard.html"));
-		// db.User.findOne({
-		// 	where: {
-		// 		id:req.params.id
-		// 	}
-		// }).then(function(dbUser){
 
-
-		// 		console.log(dbUser)
-		// 		res.render("example", {user: dbUser})
-		// })
-	});
 
 
 	app.get("/about/:id", function(req, res) {
