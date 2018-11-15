@@ -5,58 +5,67 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	
+
 	<title>Main Page</title>
 	<!-- bootstarp link -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	 crossorigin="anonymous">
-	
+
 	<link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<a class="navbar-brand" href="#">
-						<img src="../images/ltailogo-color.png" width="140" alt="logo">
-					</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav">
-						<li class="nav-item active">
-							<a class="nav-link" href="/dashboard/:id">Dashboard <span class="sr-only">(current)</span></a>
-						</li>
-						<li class="nav-item active">
-							<a class="nav-link" href="/profile/:id">Profile</a>
-						</li>
-						<ul class="float-right">
-						
-					</ul>
-					</ul>
-				</div>
-				<button type="submit" class="btn btn-outline-primary float-right" id="signOut" style="width: 150px;"> Sign Out
-										</button>
-			</nav>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">
+			<img src="../images/ltailogo-color.png" width="140" alt="logo">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+		 aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="/dashboard/">Dashboard <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="/profile/">Profile</a>
+				</li>
+				<ul class="float-right">
+
+				</ul>
+			</ul>
+		</div>
+		<button type="submit" class="btn btn-outline-primary float-right" id="signOut" style="width: 150px;"> Sign Out
+		</button>
+	</nav>
 
 	<br>
 	<br>
-	
+
 	<div class="container">
 		<div class="row textBack pt-5 mt-5">
 			<div class="col-lg-12">
 				<h3>About Let's Taco 'Bout It</h3>
 				<br>
 				<p>
-					Collaboration and communication solutions empower teams to find, connect to, and work efficiently with colleagues both inside and outside the organization. To deliver an integrated solution—combining presence, instant messaging. Let's Taco 'Bout It is a solution offers organizations the advantages of strategy. Let's Taco 'Bout It runs over a security framework that key collaboration applications such as instant messaging can use.
+					Collaboration and communication solutions empower teams to find, connect to, and work efficiently with colleagues
+					both inside and outside the organization. To deliver an integrated solution—combining presence, instant messaging.
+					Let's Taco 'Bout It is a solution offers organizations the advantages of strategy. Let's Taco 'Bout It runs over a
+					security framework that key collaboration applications such as instant messaging can use.
 				</p>
 				<p>
-					Each Let's Taco 'Bout It messenger user has a unique access identity, including a user identity (ID) and password. To simplify access to a Dash Messenger which user can communicate. Users retain complete ownership of usernames and passwords. Administrators can manage accounts and password strength, and account deactivations. 
+					Each Let's Taco 'Bout It messenger user has a unique access identity, including a user identity (ID) and password.
+					To simplify access to a Dash Messenger which user can communicate. Users retain complete ownership of usernames
+					and passwords. Administrators can manage accounts and password strength, and account deactivations.
 				</p>
 				<p>
-					Conclusion 
-					
-					Let's Taco 'Bout It is a perfect choice for organizations that want to increase productivity by offering instant messaging to their employees. This software-as-a-service (SaaS)-based solution, powered by in house data base enables IT personnel to provide wider access to colleagues inside and outside the organization securely without the high overhead costs of in-house servers, software, and maintenance. 
+					Conclusion
+
+					Let's Taco 'Bout It is a perfect choice for organizations that want to increase productivity by offering instant
+					messaging to their employees. This software-as-a-service (SaaS)-based solution, powered by in house data base
+					enables IT personnel to provide wider access to colleagues inside and outside the organization securely without
+					the high overhead costs of in-house servers, software, and maintenance.
 				</p>
 			</div>
 		</div>
@@ -73,3 +82,29 @@
 </body>
 
 </html>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+ crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+ crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+ crossorigin="anonymous"></script>
+
+<script>
+	$("#signOut").on("click", function (event) {
+		event.preventDefault();
+
+		console.log("Working!!!")
+
+
+		$.post("/api/dashboard/", {}, function (res) {
+			console.log(res);
+			if (res.redirect) {
+				window.location.pathname = res.redirect;
+
+			}
+		})
+	})
+
+
+</script>

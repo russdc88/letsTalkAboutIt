@@ -2,17 +2,13 @@ var db = require('../models');
 
 module.exports = function (app) {
 	// Get all examples
-	app.get('/api/createUser', function (req, res) {
-		db.Example.findAll({}).then(function (dbExamples) {
-			res.json(dbExamples);
-		});
-	});
+	
 
 	app.post('/api/createUser', function (req, res) {
-		db.User.create(req.body.userObj).then(function(dbUser) {
+		db.User.create(req.body.newUser).then(function(dbUser) {
 			req.session.user = dbUser.dataValues
 			console.log(req.session)
-			res.send({status:200}); 
+			res.send({status:200, redirect:'/login'}); 
 		}).catch(function(err){
 			res.send({status:500, error: err}); 
 		})
@@ -58,7 +54,7 @@ module.exports = function (app) {
 			console.log(req.body);
 			db.User.findOne({
 				where: {
-					id: req.params.id
+					id: req.session.user.id
 				}
 			}).then(function(dbUser){
 				if (dbUser){

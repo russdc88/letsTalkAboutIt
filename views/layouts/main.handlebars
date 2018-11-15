@@ -25,10 +25,10 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item active">
-						<a class="nav-link" href="/dashboard/:id">Dashboard <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="/dashboard/">Dashboard <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" href="/about/:id">About</a>
+						<a class="nav-link" href="/about/">About</a>
 					</li>
 					<ul class="float-right">
 					
@@ -84,7 +84,7 @@
 
 		var userId = window.location.pathname.split("/")[2]
 
-		$.post("/api/dashboard/", { id: userId }, function (res) {
+		$.post("/api/dashboard/", {}, function (res) {
 			console.log(res);
 			if (res.redirect) {
 				window.location.pathname = res.redirect;
@@ -93,14 +93,7 @@
 		})
 	})
 
-	function addButtons(){
-		var dash = "<a href='/dashboard'>Dashboard</a>"
-		var about ="<a href='/about'>About</a>"
-		$(".dash1").append(dash) 
-		$(".dash2").append(about)
-	}
-
-	addButtons()
+	
 
 
 
