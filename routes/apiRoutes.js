@@ -28,19 +28,21 @@ module.exports = function (app) {
 	// logging in
 
 	app.post('/api/login/:userName/:password', function(req,res) {
-	
+		console.log("hi")
 		db.User.findOne({
 			where: {
 				userName: req.params.userName,
 				password: req.params.password
 			}
+					
 		}).then(function(dbUser) {
+			console.log("hi")
 			if(dbUser){
 				console.log("this is req.session before changing authentication", req.session)
 				req.session.authenticated = true;
 				console.log("correct!")
 				console.log("after auth",req.session)
-				res.send({status:200, redirect: '/dashboard/' + dbUser.id}); 
+				res.send({status:200, redirect: '/profile/' + dbUser.id}); 
 			}
 
 			else {
