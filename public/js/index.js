@@ -12,6 +12,10 @@ let password = $("#splashFormPassword").val()
 			window.location.pathname = res.redirect; 
 		}
 
+		else {
+			$('.modal').modal('show')
+		}
+
 
 		//insert modal to communicate with user on 200 or 500 status if/else res.status
 
