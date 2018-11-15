@@ -27,12 +27,12 @@ module.exports = function (app) {
 
 	// logging in
 
-	app.post('/api/login/:userName/:password', function(req,res) {
+	app.post('/api/login', function(req,res) {
 		console.log("hi")
 		db.User.findOne({
 			where: {
-				userName: req.params.userName,
-				password: req.params.password
+				userName: req.body.userName,
+				password: req.body.password
 			}
 					
 		}).then(function(dbUser) {
@@ -40,6 +40,7 @@ module.exports = function (app) {
 			if(dbUser){
 				console.log("this is req.session before changing authentication", req.session)
 				req.session.authenticated = true;
+				req.session.user = dbUser
 				console.log("correct!")
 				console.log("after auth",req.session)
 				res.send({status:200, redirect: '/profile/' + dbUser.id}); 
@@ -56,7 +57,7 @@ module.exports = function (app) {
 
 	// logging out
 
-	app.post('/api/dashboard/:id', function (req,res){
+	app.post('/api/dashboard/', function (req,res){
 		if (req.session.authenticated = true){
 
 			
@@ -83,6 +84,30 @@ module.exports = function (app) {
 			})
 		}
 
+	})
+
+
+	app.get("/api/loggedIn", function(req,res){
+		console.log('hit')
+		if(req.session.authenticated){
+			res.send({
+				authenticated: req.session.authenticated,
+				user: req.session.user
+			})
+		}
+		else {
+			res.send({
+				authenticated: false
+			})
+		}
+	})
+
+
+	app.get("/api/friends", function(req,res){
+		db.User.findAll({})
+		.then(function(allUsers){
+			res.send({status:200, users: allUsers})
+		})
 	})
 	
 

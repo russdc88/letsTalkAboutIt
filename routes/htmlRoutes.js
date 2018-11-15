@@ -30,11 +30,11 @@ module.exports = function (app) {
 		})
 	})
 
-	app.get("/about/:id", function(req, res) {
+	app.get("/about", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/html/about.html"));
 	});
 
-	app.get("/dashboard/:id", function(req, res) {
+	app.get("/dashboard", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/html/dashboard.html"));
 	});
 	// // Load example page and pass in an example by id
