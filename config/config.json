@@ -17,5 +17,11 @@
   "production": {
     "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
-  }
+	},
+	"socket-json-name": {
+		"name": "socket-chat-example",
+		"version": "0.0.1",
+		"description": "my first socket.io app",
+		"dependencies": {}
+	}
 }

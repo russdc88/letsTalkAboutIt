@@ -8,17 +8,11 @@ module.exports = function (app) {
 		});
 	});
 
-
-// creating user with authenticating key being false
-
 	app.post('/api/createUser', function (req, res) {
-		console.log("this is the req.body from Route", req.body);
-		db.User.create(req.body.newUser).then(function(dbUser) {
-			console.log("this is req.session", req.session)
+		db.User.create(req.body.userObj).then(function(dbUser) {
 			req.session.user = dbUser.dataValues
-			req.session.authenticated = false;
 			console.log(req.session)
-			res.send({status:200,redirect:'/login'}); 
+			res.send({status:200}); 
 		}).catch(function(err){
 			res.send({status:500, error: err}); 
 		})
@@ -27,12 +21,12 @@ module.exports = function (app) {
 
 	// logging in
 
-	app.post('/api/login/:userName/:password', function(req,res) {
+	app.post('/api/login', function(req,res) {
 		console.log("hi")
 		db.User.findOne({
 			where: {
-				userName: req.params.userName,
-				password: req.params.password
+				userName: req.body.userName,
+				password: req.body.password
 			}
 					
 		}).then(function(dbUser) {
@@ -40,6 +34,7 @@ module.exports = function (app) {
 			if(dbUser){
 				console.log("this is req.session before changing authentication", req.session)
 				req.session.authenticated = true;
+				req.session.user = dbUser
 				console.log("correct!")
 				console.log("after auth",req.session)
 				res.send({status:200, redirect: '/profile/' + dbUser.id}); 
@@ -56,7 +51,7 @@ module.exports = function (app) {
 
 	// logging out
 
-	app.post('/api/dashboard/:id', function (req,res){
+	app.post('/api/dashboard', function (req,res){
 		if (req.session.authenticated = true){
 
 			
@@ -83,6 +78,30 @@ module.exports = function (app) {
 			})
 		}
 
+	})
+
+
+	app.get("/api/loggedIn", function(req,res){
+		console.log('hit')
+		if(req.session.authenticated){
+			res.send({
+				authenticated: req.session.authenticated,
+				user: req.session.user
+			})
+		}
+		else {
+			res.send({
+				authenticated: false
+			})
+		}
+	})
+
+
+	app.get("/api/friends", function(req,res){
+		db.User.findAll({})
+		.then(function(allUsers){
+			res.send({status:200, users: allUsers})
+		})
 	})
 	
 
