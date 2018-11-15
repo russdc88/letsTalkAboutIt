@@ -46,13 +46,6 @@ $("#submitMessage").on("click", function (event) {
 	event.preventDefault();
 	socket.emit('chat', { message: "hi" })
 
-<<<<<<< HEAD
-})	
-
-
-
-
-=======
 // 	console.log("Working!!!")
 
 // 		var userId = window.location.split("/")[2]
@@ -68,4 +61,3 @@ $("#submitMessage").on("click", function (event) {
 // })
 
 })	
->>>>>>> master

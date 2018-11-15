@@ -49,7 +49,6 @@ module.exports = function (app) {
 		})
 	});
 
-<<<<<<< HEAD
 	// logging out
 
 	app.post('/api/dashboard/', function (req,res){
@@ -123,8 +122,6 @@ module.exports = function (app) {
 
 	// })
 
-=======
->>>>>>> master
 	// Delete an example by id
 	app.delete('/api/examples/:id', function (req, res) {
 		db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
