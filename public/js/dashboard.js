@@ -1,5 +1,13 @@
 var auth = {}
 
+var socket;
+
+var stringID;
+
+var ownstringID;
+
+var nsproom;
+
 $.get( "/api/loggedIn", function( data ) {
 	if (!data.authenticated){
 		window.location.pathname = "/login"
@@ -31,20 +39,67 @@ function getFriends(){
 
 
 $("#friendsList").on("click", ".friendFromFriendList", function(){
-	console.log(JSON.parse($(this).attr("data-user")).id)
+	//console.log(JSON.parse($(this).attr("data-user")).id)
 	let socketID;
-	
-	console.log(auth.user.id);
+	var otherUserID = JSON.parse($(this).attr("data-user")).id;
+	var ownUserID = auth.user.id;
+
+
+	if (ownUserID == otherUserID){
+		console.log("you can't chat with yourself!");
+		$(ownUserID).hide();
+		return;
+	}
+
+	if (ownUserID < otherUserID){
+		console.log("more than yours")
+		console.log(otherUserID);
+		console.log(ownUserID);
+
+		stringID = otherUserID.toString();
+
+		ownstringID = ownUserID.toString();
+
+		nsproom = stringID + "_" + ownstringID;
+
+		console.log(nsproom);
+		connectToSocket();
+		return;
+
+	}
+
+	else if (otherUserID < ownUserID){
+console.log("less than yours");
+		console.log(otherUserID);
+		console.log(ownUserID);
+
+		stringID = otherUserID.toString();
+
+		ownstringID = ownUserID.toString();
+		
+		nsproom = ownstringID + "_" + stringID;
+
+		console.log(nsproom);
+		connectToSocket();
+		
+		return;
+
+	}else{console.log("notta"); return;}
 	//sockets!!!!!!!!!!!!!
 })
 
-var socket = io();
-
-
+$("#formId").on("submit", function(event){
+	event.preventDefault();
+	socket.emit('chat', { message: $("#sendMessage").val() });
+	
+})
 
 $("#submitMessage").on("click", function (event) {
 	event.preventDefault();
-	socket.emit('chat', { message: "hi" })
+
+	socket.emit('chat', { message: $("#sendMessage").val() });
+	
+
 
 // 	console.log("Working!!!")
 
@@ -61,3 +116,20 @@ $("#submitMessage").on("click", function (event) {
 // })
 
 })	
+
+function connectToSocket(){
+	if(socket){
+    socket.disconnect();
+  }
+
+	socket = io("/" + nsproom, {forceNew: true});
+	$.post("/api/joinSocket",{nsproom:nsproom}, function(res){
+		console.log(res);
+		socket.on('chat', function(msg){
+			$('#messages').append($('<li>').text(msg.message));
+			console.log(msg);
+    });
+	})
+}
+
+console.log(nsproom);
