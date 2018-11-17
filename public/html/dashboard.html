@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+	<title>Dashboard</title>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	 crossorigin="anonymous">
@@ -23,82 +23,76 @@
 </head>
 
 <body>
-	<!-- As a heading -->
+
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#">
-					<img src="../images/ltailogo-color.png" width="140" alt="logo">
-				</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item active">
-						<a class="nav-link" href="/dashboard/">Dashboard <span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="/about/">About</a>
-					</li>
-					<ul class="float-right">
-					
+		<a class="navbar-brand" href="#">
+			<img src="../images/ltailogo-color.png" width="140" alt="logo">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+		 aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="/dashboard/">Dashboard <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="/about/">About</a>
+				</li>
+				<ul class="float-right">
+
 				</ul>
-				</ul>
-			</div>
-			<button type="submit" class="btn btn-outline-primary float-right" id="signOut" style="width: 150px;"> Sign Out</button>
-		</nav>
-
-	<div class="container-fluid ">
-		<div class="row">
-			<div class="col-xl-3  bg-secondary full" id="friendsList">
-				<h5 id="welcome">Welcome!</h5>
-			</div>
-			<div class="col-xl-9 ">
-				<div class="almost-full bg-light">
-					<p>Start Here!
-					</p>
-				</div>
-
-				<form>
-					<div class="form-row align-items-center">
-						<div class="col-auto">
-							<label class="sr-only" for="inlineFormInput">Name</label>
-							<input type="text" class="form-control mb-2" id="sendMessage" placeholder="Jane Doe">
-						</div>
-
-
-						<div class="col-auto">
-							<button type="button" class="btn btn-primary mb-2 btn-block " id="submitMessage">Submit</button>
-						</div>
-					</div>
-				</form>
-			</div>
+			</ul>
 		</div>
+		<button type="submit" class="btn btn-outline-primary float-right" id="signOut" style="width: 150px;"> Sign Out</button>
+	</nav>
+
+	<div class="row" style="margin: 0; width: 99%; ">
+		<div class="col-lg-3 bg-dark" id="friendsList" style="color: white; height: 93vh;">
+			<h5 id="welcome">Friend's List</h5>
+		</div>
+
+		<div class="col-lg-9" id="chatBox">
+			<p>Start Here!
+			</p>
+			<form>
+				<div class="form-row" id="chatForm">
+					<div class="col-lg-10">
+						<input type="text" class="form-control" id="sendMessage" placeholder="Whatcha wanna chat about? ">
+					</div>
+
+					<div class="col-2">
+						<button type="button" class="btn btn-primary btn-block" id="submitMessage">Submit</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	</div>
 	</div>
 	<script src="./../js/dashboard.js"></script>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
- crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
- crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
- crossorigin="anonymous"></script>
-	
+	 crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	 crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+	 crossorigin="anonymous"></script>
+
 	<script>
 		$("#signOut").on("click", function (event) {
-		event.preventDefault();
+			event.preventDefault();
+			console.log("Working!!!")
 
-		console.log("Working!!!")
+			$.post("/api/dashboard/", {}, function (res) {
+				console.log(res);
+				if (res.redirect) {
+					window.location.pathname = res.redirect;
 
-		
-		$.post("/api/dashboard/", {}, function (res) {
-			console.log(res);
-			if (res.redirect) {
-				window.location.pathname = res.redirect;
-				
-			}
+				}
+			})
 		})
-	})
-
 	</script>
 </body>
 
