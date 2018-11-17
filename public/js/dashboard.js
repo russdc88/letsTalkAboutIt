@@ -97,7 +97,7 @@ $("#formId").on("submit", function(event){
 $("#submitMessage").on("click", function (event) {
 	event.preventDefault();
 
-	socket.emit('chat', { message: $("#sendMessage").val() });
+	socket.emit('chat', { message: $("#sendMessage").val(), userName: auth.user.userName });
 	
 
 
@@ -126,8 +126,14 @@ function connectToSocket(){
 	$.post("/api/joinSocket",{nsproom:nsproom}, function(res){
 		console.log(res);
 		socket.on('chat', function(msg){
-			$('#messages').append($('<li>').text(msg.message));
-			console.log(msg);
+			if (msg.userName === auth.user.userName) {
+				$('#messages').append($('<div class="row" style="background: blue; border-radius: 15px; color: white; padding: 10px 30px; width: 50%;><p id="myMessage" style="background: green; border-radius: 15px; color: white; padding: 10px 30px;"></p></div><br><br>').text(msg.message));
+				
+			}
+			else {
+				$('#messages').append($('<div class="row" style="background: blue; border-radius: 15px; color: white; padding: 10px 30px;><p id="theirMessage" style="background: blue; border-radius: 15px; color: white; padding: 10px 30px; width: 50%;"></p></div><br><br>').text(msg.message));
+			}
+			
     });
 	})
 }
