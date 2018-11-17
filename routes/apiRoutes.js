@@ -7,7 +7,7 @@ module.exports = function (app) {
 	app.post('/api/createUser', function (req, res) {
 		db.User.create(req.body.newUser).then(function(dbUser) {
 			req.session.user = dbUser.dataValues
-			console.log(req.session)
+			//console.log(req.session)
 			res.send({status:200, redirect:'/login'}); 
 		}).catch(function(err){
 			res.send({status:500, error: err}); 
@@ -18,7 +18,7 @@ module.exports = function (app) {
 	// logging in
 
 	app.post('/api/login', function(req,res) {
-		console.log("hi")
+		//console.log("hi")
 		db.User.findOne({
 			where: {
 				userName: req.body.userName,
@@ -26,13 +26,13 @@ module.exports = function (app) {
 			}
 					
 		}).then(function(dbUser) {
-			console.log("hi")
+			//console.log("hi")
 			if(dbUser){
-				console.log("this is req.session before changing authentication", req.session)
+				//console.log("this is req.session before changing authentication", req.session)
 				req.session.authenticated = true;
 				req.session.user = dbUser
-				console.log("correct!")
-				console.log("after auth",req.session)
+				//console.log("correct!")
+				//console.log("after auth",req.session)
 				res.send({status:200, redirect: '/profile/' + dbUser.id}); 
 			}
 
@@ -51,7 +51,7 @@ module.exports = function (app) {
 		if (req.session.authenticated = true){
 
 			
-			console.log(req.body);
+			//console.log(req.body);
 			db.User.findOne({
 				where: {
 					id: req.session.user.id
@@ -100,7 +100,6 @@ module.exports = function (app) {
 		})
 	})
 	
-
 	// app.post('/api/updateProfile', function(req,res){
 	// 	console.log(req.session)
 	// 	if (!req.session.authenticated){
