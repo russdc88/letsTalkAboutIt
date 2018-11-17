@@ -61,12 +61,13 @@ app.post("/api/joinSocket", function(req, res){
 
 		spaces[nsp].on('connection', function(socket){
 			console.log('someone connected');
-			console.log(socket);
+			
 			socket.on('disconnect', function(){
 				console.log('user disconnected');
 			})
 
 			socket.on('chat', function(msg){
+				console.log(msg)
 				spaces[nsp].emit('chat', msg);
 			})
 
@@ -92,8 +93,8 @@ app.post("/api/joinSocket", function(req, res){
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function () {
-	http.listen(PORT, '0.0.0.0', function() {
-		console.log('Listening to port:  ' + PORT);
+	http.listen(3001, '0.0.0.0', function() {
+		console.log('Listening to port:  ' + 3001);
 	});
 
 });
@@ -120,20 +121,4 @@ db.sequelize.sync(syncOptions).then(function () {
 module.exports = app;
 //socket.io server code
 
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-		io.emit('chat message', msg);
-		io.emit("welcome", "hello")
-		console.log(socket.connected);
-  });
-});
-//namespace connections
-io.of("/dashboard/insertidshere").on("connection", (socket) => {
 
-	io.emit("welcome");
-
-})
-
-http.listen(3000, () => {
-	console.log("server is listening on localhost:3000")
-});

@@ -90,7 +90,7 @@ console.log("less than yours");
 
 $("#formId").on("submit", function(event){
 	event.preventDefault();
-	socket.emit('chat', { message: $("#sendMessage").val() });
+	socket.emit('chat', { message: $("#sendMessage").val(), userName: auth.user.userName });
 	
 })
 
@@ -126,12 +126,13 @@ function connectToSocket(){
 	$.post("/api/joinSocket",{nsproom:nsproom}, function(res){
 		console.log(res);
 		socket.on('chat', function(msg){
+			console.log(msg.userName, auth.user.userName)
 			if (msg.userName === auth.user.userName) {
-				$('#messages').append($('<div class="row" style="background: blue; border-radius: 15px; color: white; padding: 10px 30px; width: 50%;><p id="myMessage" style="background: green; border-radius: 15px; color: white; padding: 10px 30px;"></p></div><br><br>').text(msg.message));
+				$('#messages').append($('<div class="row" style="background: pink; border-radius: 15px; color: black; width: 100%;"><p id="myMessage" style="background: blue; position:absolute; right:0px; green; width:50%; border-radius: 15px; color: white; padding: 10px 30px;">' + msg.message +'</p></div><br><br>'));
 				
 			}
 			else {
-				$('#messages').append($('<div class="row" style="background: blue; border-radius: 15px; color: white; padding: 10px 30px;><p id="theirMessage" style="background: blue; border-radius: 15px; color: white; padding: 10px 30px; width: 50%;"></p></div><br><br>').text(msg.message));
+				$('#messages').append($('<div class="row" style="background: white; border-radius: 15px; color: white; width: 100%;"><p id="myMessage" style="background: grey; width:50%; border-radius: 15px; color: white; padding: 10px 30px;">' + msg.message +'</p></div><br><br>'));
 			}
 			
     });
