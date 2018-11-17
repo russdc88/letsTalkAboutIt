@@ -143,4 +143,10 @@ width: 250px;
 	padding: 20px;
 }
 
+#myMessage {
+	float: right;
+}
 
+#theirMessage {
+	float: left;
+}
