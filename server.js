@@ -93,7 +93,7 @@ app.post("/api/joinSocket", function(req, res){
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function () {
-	http.listen(3001, '0.0.0.0', function() {
+	http.listen(3000, '0.0.0.0', function() {
 		console.log('Listening to port:  ' + 3001);
 	});
 
