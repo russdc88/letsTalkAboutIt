@@ -38,6 +38,18 @@ function getFriends(){
 }
 
 
+$("#currentUserId").on("click", function(event){
+	event.preventDefault();
+
+	$.post("/api/profile",{}, function(res){
+		console.log(res);
+		if(res.redirect) {
+			window.location.pathname = res.redirect
+		}
+	})
+})
+
+
 $("#friendsList").on("click", ".friendFromFriendList", function(){
 	//console.log(JSON.parse($(this).attr("data-user")).id)
 	let socketID;
