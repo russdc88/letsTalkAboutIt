@@ -35,7 +35,7 @@ module.exports = function (app) {
 
 
 	app.get("/about", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/html/about.html"));
+    res.sendFile(path.join(__dirname, "../public/html/About.html"));
 	});
 
 	app.get("/dashboard", function(req, res) {
