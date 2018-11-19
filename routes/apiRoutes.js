@@ -36,7 +36,7 @@ module.exports = function (app) {
 				res.send({status:200, redirect: '/profile/' + dbUser.id}); 
 			}
 
-			else {
+			else {	
 				console.log("wrong")
 				res.send({status:404});
 			}
@@ -100,22 +100,34 @@ module.exports = function (app) {
 		})
 	})
 	
-	// app.post('/api/updateProfile', function(req,res){
-	// 	console.log(req.session)
-	// 	if (!req.session.authenticated){
-	// 		console.log("must be logged in!")
-	// 		return
-	// 	}
+	app.post('/api/profile', function (req,res){
+		if (req.session.authenticated = true){
 
-		// db.User.update(req.body,
-		// 	{
-		// 		where: {
-		// 			id: req.session.user.id
-		// 		}
-		// 	})
+			
+			//console.log(req.body);
+			db.User.findOne({
+				where: {
+					id: req.session.user.id
+				}
+			}).then(function(dbUser){
+				if (dbUser){
+					
+				
+				
+					console.log(req.session)
+					res.send({status:200, redirect: '/profile/' + dbUser.id})
+				}
+				
+				else {
+					console.log("did not sign out")
+					res.send({status:404});
+				}
+			}).catch(function(err){
+				res.send({status:500, error: err});
+			})
+		}
 
-
-	// })
+	})
 
 	// Delete an example by id
 	app.delete('/api/examples/:id', function (req, res) {
