@@ -106,6 +106,10 @@ $("#formId").on("submit", function(event){
 	
 })
 
+
+
+
+
 $("#submitMessage").on("click", function (event) {
 	event.preventDefault();
 
@@ -113,19 +117,6 @@ $("#submitMessage").on("click", function (event) {
 	
 
 
-// 	console.log("Working!!!")
-
-// 		var userId = window.location.split("/")[2]
-
-// 	$.post("/api/dashboard/" + userId , {id: userId}, function (res){
-// 		console.log(res);
-// 		if (res.redirect){
-// 			window.location.pathname = res.redirect;
-// 		}
-// 	}) 
-
-
-// })
 
 })	
 
@@ -136,6 +127,7 @@ function connectToSocket(){
 
 	socket = io("/" + nsproom, {forceNew: true});
 	$.post("/api/joinSocket",{nsproom:nsproom}, function(res){
+		$("#messages").empty();
 		console.log(res);
 		socket.on('chat', function(msg){
 			console.log(msg.userName, auth.user.userName)
