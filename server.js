@@ -2,7 +2,7 @@ require('dotenv').config();
 var express = require('express');
 var exphbs = require('express-handlebars');
 var session = require('express-session');
-let config = require('./config.js')
+// let config = require('./config.js')
 const bodyParser = require('body-parser');
 let spaces = {};
 
@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session({
-	secret: config.secret,
+	secret: process.env.secret,
   resave: true,
   saveUninitialized: false,
   cookie: { maxAge: (1000*60*60*24*14) }
